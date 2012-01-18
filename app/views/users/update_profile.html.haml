@@ -1,0 +1,23 @@
+- title("Update profile")
+.app_form.big
+  = error_messages_for :user
+  - form_for :user do |f|
+    = f.label :display_name
+    %br
+    .field
+      = f.text_field :display_name
+
+    = f.label :bio, '100-character bio'
+    %br
+    .field
+      = f.text_area :bio, :style => "height: 60px"
+
+    %button.button.positive{:type => 'submit'} Update profile!  
+    = link_to("Cancel", :back, :class => "button negative")
+    = clear_both
+
+  .otheroptions
+    Having problems updating your profile?  Please
+    = help_email_link + '.'
+
+= set_focus_to_id "user_display_name"

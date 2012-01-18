@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+					  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html>
+<head>
+  <title>Scrawlers will be back soon</title>
+  <meta name="description" content="Writers read.  Writers write.  Empower the writer within you.  Join the Scrawlers community." />
+  <meta name="keywords" content="author, writer, workshop, writing workshop, workshopping, writing community, writer community" />
+  <meta name="verify-v1" content="a3Uar0TdP6cVTPPvsmRrJ5lTzoNqjRt1T24ECuGeBCs=" />
+  <link href="/stylesheets/scrawlers.css" media="screen" rel="Stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div id="top">
+		<div id="header">
+			<img alt="Scrawlers.  Writers read.  Writers write." src="/images/logo_text.gif" />
+		</div>
+	</div>
+
+	<div id="content_body">
+	   <div id="content_single_column">
+      	<div class="body">
+      		<h2 id="page_title">
+      			Scrawlers is offline
+      		</h2>
+		
+      		<h1>
+              Scrawlers is currently down for <%= reason ? reason : "maintenance" %>
+              as of <%= Time.now.strftime("%H:%M %Z") %>.
+            </h1>
+            <p>
+              Sorry for the inconvenience. We'll get you scrawling 
+              <%= deadline ? "by #{deadline}" : "soon" %>.
+            </p>
+            <p>
+              Please <a href="mailto:help@scrawlers.com">email us</a> if you need to get in touch.
+            </p>
+         </div>
+
+         <div id="other_stuff">
+         </div>
+         <div class="footer">
+         </div>
+      </div>
+
+	</div>
+	</body>
+	
+  <script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+  var pageTracker = _gat._getTracker("UA-651585-2");
+  pageTracker._initData();
+  pageTracker._trackPageview();
+  </script>
+</html>

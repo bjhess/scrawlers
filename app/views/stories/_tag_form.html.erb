@@ -1,0 +1,7 @@
+<span id="add_tag_<%= @story.id %>" class="app_form inline_form" style="display:none;">
+	<% form_remote_tag(:url => { :controller => :stories, :action => :add_tag, :story_id => @story.id }) do %>
+    <span class="field">
+      <%= text_field "tag", "name_#{@story.id}" %>
+    </span>
+	<% end %>
+</span>

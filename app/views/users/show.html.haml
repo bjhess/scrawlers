@@ -1,0 +1,30 @@
+- title("#{user_possessive(@user)} bookshelf and workshops")
+- if @user == current_user
+  #user_management
+    %ul
+      %li= link_to "Manage account", edit_user_path(@user)
+      %li= link_to_notes_for_user_rss(@user)
+
+#bookshelves
+  %h2= user_possessive(@user) + " recent workshops"
+  .bookshelf
+    %h4= "Stories " + link_to_user_rss(@user)
+    = stories_area do
+      = render(:partial => "stories/list/story", :collection => @stories)
+    - if @user.stories.more_than?(10)
+      %div
+        %span.more= link_to("More...", user_stories_path(@user, :page => 2))
+  .bookshelf
+    %h4 Noted
+    = comments_area do
+      = render(:partial => "comments/list/comment", :collection => @comments)
+    - if @user.notes.more_than?(10)
+      %div
+        %span.more= link_to("More...", user_notes_path(@user, :page => 2))
+
+- sidebar_area do
+  = render :partial => "sidebar/author", :object => @user
+  = render :partial => "sidebar/user_list", :object => @fans, :locals => {:title => "Fans"} unless @fans.blank?
+  = render :partial => "sidebar/user_list", :object => @favorite_authors, :locals => {:title => "Favorite authors"} unless @favorite_authors.blank?
+  - all_link = @latest_favorite_stories.size >= 5 ? {:all_link => user_favorite_stories_path(@user)} : {}
+  = render :partial => "sidebar/stories", :object => @latest_favorite_stories, :locals => {:list_title => "Favorite stories"}.merge(all_link) unless @latest_favorite_stories.blank?

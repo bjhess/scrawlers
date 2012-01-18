@@ -1,0 +1,14 @@
+<%- title("Authors and writing workshop participants") -%>
+<%- @subtitle = "The writers" -%>
+<table border="none" cellpadding="0" cellspacing="0" class="user_list">
+  <%- User.ordered.each do |u| -%>
+    <%- story_count, note_count = u.stories.count, u.notes.count -%>
+    <%- next if story_count == 0 && note_count == 0 -%>
+    <tr class="<%= cycle("even", "odd") -%>">
+      <td><%= link_to_user_profile(u) -%></td>
+      <td><%= story_count > 0 ? link_to(pluralize(story_count, "story"), user_stories_path(u)) : pluralize(story_count, "story") -%></td>
+      <td><%= note_count > 0 ? link_to(pluralize(note_count, "note"), user_notes_path(u)) : pluralize(note_count, "note") -%></td>
+      <td>since <%= u.created_at.to_s(:normal) %></td>
+    </tr>
+  <%- end -%>
+</table>

@@ -1,0 +1,4 @@
+page.visual_effect :blind_up, "add_tag_" + @story_id, :duration => 0.6
+page.delay(1.second) do
+  page["tag_name_#{@story_id}"].value = ""
+end

@@ -1,0 +1,11 @@
+<h1>Site Overview</h1>
+<ul>
+	<li>Number of users: <%= @user_count %></li>
+	<li>Number of scrawls: <%= @story_count %></li>
+	<li>Number of notes: <%= @comment_count %></li>
+	<li>Number of responses: <%= @response_count %></li>
+	<li>Pct of users who have written a story: <%= number_with_precision(@authorship_percentage * 100, 2) %></li>
+	<li>Pct of users who have given notes: <%= number_with_precision(@commentor_percentage * 100, 2)%></li>
+</ul>
+
+<p><%= link_to "Go see detailed data", :controller => :admin, :action => :scaffold_index %>

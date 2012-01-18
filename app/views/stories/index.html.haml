@@ -1,0 +1,10 @@
+- if "favorite_stories" == controller.controller_name
+  -@title    = "#{@user.display_name}'s favorite 100-word stories"
+  -@subtitle = "#{link_to_user_profile(@user)}'s favorite stories"
+- elsif params[:user_id]
+  - @title    = "100-word stories by #{@user.display_name}"
+  - @subtitle = "Stories by #{link_to_user_profile(@user)}" 
+- title(@title) if @title
+.story_list
+  = render :partial => 'stories/story', :collection => @stories
+= render(:partial => "application/paginate", :locals => { :collection => @stories})

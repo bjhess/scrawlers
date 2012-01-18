@@ -1,0 +1,7 @@
+- comment = comment_response_form
+%div{:id => "comment_response_#{comment.id}", :style => "display:none;"}
+  - form_for "comment_response_#{comment.id}", :url => create_response_story_notes_path(@story, :parent_id => comment.id), :html => { :onsubmit => "return validateResponse('#{comment.id}')" } do |form|
+    #save_comment_response
+      = form.text_area :body
+      %button{:type => "submit", :class => 'button positive'} Respond!
+      = link_to_function("Cancel", "$('comment_response_#{comment.id}','respond_link_comment_#{comment.id}').invoke('toggle');", :class => 'button')

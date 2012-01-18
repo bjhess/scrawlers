@@ -1,0 +1,11 @@
+.listed_story
+  %h6
+    = link_to truncate(h(comment.body), :length => 20), story_path(comment.story, :anchor => "comment_#{comment.id}")
+  .meta
+    = time_ago(comment.created_at)
+    on
+    = link_to h(comment.story.title), story_path(comment.story)
+  - if comment.response && @user.is_same_user?(current_user)
+    .tool.response.meta
+      Author
+      = link_to "response", story_path(comment.story, :anchor => "comment_#{comment.id}")

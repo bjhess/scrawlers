@@ -1,0 +1,12 @@
+- comment = comment_response
+- if comment.response
+  .response
+    %h6{:id => "comment_#{comment.response.id}"}
+      = link_to_user_profile(comment.story.user)
+      %span.meta
+        responded
+        = time_ago(comment.response.created_at)
+    = simple_format(h(comment.response.body))
+- elsif is_current_user?(comment.story.user)
+  = link_to_remote("Respond!", :url => {:action => :show_comment_response, :comment_id => comment.id}, :html => {:class => 'button positive', :id => dom_id(comment, :respond_link)})
+  = render :partial => 'comment_response_form', :object => comment

@@ -1,0 +1,12 @@
+if @invite.valid?
+  page["invitation_email"].value = ""
+  page.replace_html "invite_message_#{@story_id}", "Thanks for Sharing!"
+  page["invite_message_#{@story_id}"].show
+  page["invite_message_#{@story_id}"].visual_effect :highlight, :duration => 2
+  page["invite_message_#{@story_id}"].visual_effect :fade, :delay => 3, :duration => 3
+else  
+  page.replace_html "invite_message_#{@story_id}", @invite.error_message_string
+  page["invite_message_#{@story_id}"].show
+  page["invite_message_#{@story_id}"].visual_effect :highlight, :startcolor => '#FFA07A', :duration => 2
+end
+

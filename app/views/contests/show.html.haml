@@ -1,0 +1,14 @@
+- title("#{@header} : 100-word story writing contest")
+- stylesheet("contests.css")
+= render(:partial => "application/content_left_open")
+- header_area do
+  %h2.page_header= @header
+#contest_image
+  = image_tag(@contest.image_link)
+%div
+  <strong>Winner:</strong>
+  = contest_winner_text(@contest)
+#contest_description
+  = @contest.description
+= render(:partial => "application/content_left_close")
+= sidebar_area

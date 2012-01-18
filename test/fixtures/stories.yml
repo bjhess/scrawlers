@@ -1,0 +1,40 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+yesterdays_story:
+  id: 1
+  user_id: 1
+  title: Winter Wonderland
+  body: Rise. Fall. \n\n In the quiet field, what should have been a gentle, beautiful snowfall was an avalanche to the broken man. He had long since given up trying to move; choosing to recline comfortably and view his life as it passed. His arms were covered. His legs would be blanketed soon. \n\n Rise. Fall. \n\n As time slowed, he could hear each individual flake crashing into his body. Some melted and rolled away harmlessly. Most landed, stuck, and waited for a cascade of friends. \n\n Rise. \n\n The wind swept and the snow drifted. \n\n Fall.
+  created_at: <%= 1.days.ago.to_s :db %>
+  published_at: <%= 1.days.ago.to_s :db %>
+
+ten_days_ago_story:
+  id: 2
+  user_id: 2
+  title: Walk on By
+  body: Every day as white collars drag themselves to work he sits and rocks on his porch. Eyes filled with untold experience peer out over a newspaper ten years expired. My eyes lock on to his stare. A smile that can predict the future cracks his emotionless veneer. I feel two piercing bolts on the back of my head as his gaze accompanies me through my office doors. \n\n Arriving at my floor, I stop in the stairwell and look out the window. The newspaper is folded neatly on the still rocking chair.
+  created_at: <%= 10.days.ago.to_s :db %>
+  published_at: <%= 10.days.ago.to_s :db %>
+
+two_months_ago_story:
+    id: 3
+    user_id: 2
+    title: Arm Free
+    body: Yeah, so my arm fell off last week. It had been a little numb for a month or so. I was at the grocery store and I turned to reach for some Hamburger Helper with my left hand and when I faced back forward my right arm was hanging from the shopping cart. \n\n It was kind of gross (one lady screamed), but there wasn't much blood or anything. The doctor told me it had something to do with cancer, but strangely most of the cancer fell off along with my appendage. \n\n Luckily I quit using that arm in junior college.
+    created_at: <%= 2.months.ago.to_s :db %>
+    published_at: <%= 2.months.ago.to_s :db %>
+    
+quentin_story:
+  id: 4
+  user_id: 1
+  title: Winter Wonderland
+  body: Rise. Fall. \n\n In the quiet field, what should have been a gentle, beautiful snowfall was an avalanche to the broken man. He had long since given up trying to move; choosing to recline comfortably and view his life as it passed. His arms were covered. His legs would be blanketed soon. \n\n Rise. Fall. \n\n As time slowed, he could hear each individual flake crashing into his body. Some melted and rolled away harmlessly. Most landed, stuck, and waited for a cascade of friends. \n\n Rise. \n\n The wind swept and the snow drifted. \n\n Fall.
+  created_at: <%= 1.days.ago.to_s :db %>
+  published_at: <%= 1.days.ago.to_s :db %>
+
+aaron_story:
+  id: 5
+  user_id: 2
+  title: Walk on By
+  body: Every day as white collars drag themselves to work he sits and rocks on his porch. Eyes filled with untold experience peer out over a newspaper ten years expired. My eyes lock on to his stare. A smile that can predict the future cracks his emotionless veneer. I feel two piercing bolts on the back of my head as his gaze accompanies me through my office doors. \n\n Arriving at my floor, I stop in the stairwell and look out the window. The newspaper is folded neatly on the still rocking chair.
+  created_at: <%= 10.days.ago.to_s :db %>
+  published_at: <%= 10.days.ago.to_s :db %>

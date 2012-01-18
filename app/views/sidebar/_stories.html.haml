@@ -1,0 +1,12 @@
+/ Partial expects a list_title along with a story collection.
+/ bypass_byline and all_link are optional local variables.
+- bypass_byline ||= false
+- all_link      ||= false 
+%h4= list_title
+%ul
+  - stories.each do |story|
+    %li
+      = link_to story.title, story_path(story)
+      = "by #{story.user.display_name}" unless bypass_byline
+  - if all_link
+    %li.more= link_to('more...', all_link)

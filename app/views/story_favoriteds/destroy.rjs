@@ -1,0 +1,1 @@
+page.replace_html(dom_id(@story, :favorited), make_favorite_story)

@@ -1,0 +1,26 @@
+- title("Update email address")
+.app_form.big
+  - unless @changed
+    %h3	Update email: Step 1 of 3
+    = error_messages_for :user
+    - form_for :user do |f|
+      = f.label :email
+      %br
+      .field
+        = f.text_field :email
+      %button.button.positive{:type => 'submit'} Update email!  
+      = link_to("Cancel", edit_user_path(@user), :class => "button negative")
+      = clear_both
+  
+    .otheroptions
+      Having problems updating your email address?  Please
+      = help_email_link + '.'
+  - else
+    %h3 Update email: Step 2 of 3
+    %p
+      An email has been sent to the address you provided
+      = '(' + current_user.new_email + ').'
+    %p Please follow the instructions contained in the email to activate your new email address.
+    %p= "Feel free to #{link_to 'head back to your profile', user_path(current_user)}."
+
+= set_focus_to_id "user_email"

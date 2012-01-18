@@ -1,0 +1,44 @@
+  <div id="footer" class="span-24 prepend-top rounded_top">
+    <div class="container">
+      Created by <%= link_to("Barry Hess", "http://bjhess.com") %> 
+      and <%= link_to("Nathan Melcher", "http://nathanmelcher.com") -%> &middot; 
+      <%= link_to("Help", :controller => :the_scrawl, :action => :help) -%> &middot; 
+      <%= link_to("FAQ", :controller => :the_scrawl, :action => :faq) -%> &middot; 
+      <%= link_to("Copyright Policy", :controller => :the_scrawl, :action => :terms_and_conditions, :anchor => :copyright_policy) -%> &middot; 
+      <%= link_to("Privacy Policy", :controller => :the_scrawl, :action => :terms_and_conditions, :anchor => :privacy_policy) -%> &middot; 
+      <%= link_to("Terms &amp; Conditions", :controller => :the_scrawl, :action => :terms_and_conditions) -%> &middot; 
+      <%= link_to("About Us", :controller => :the_scrawl, :action => :about_us) %>
+  
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var uservoiceJsHost = ("https:" == document.location.protocol) ? "https://uservoice.com" : "http://cdn.uservoice.com";
+document.write(unescape("%3Cscript src='" + uservoiceJsHost + "/javascripts/widgets/tab.js' type='text/javascript'%3E%3C/script%3E"))
+</script>
+<script type="text/javascript">
+UserVoice.Tab.show({ 
+key: 'scrawlers',
+host: 'scrawlers.uservoice.com', 
+forum: 'general', 
+alignment: 'right', /* 'left', 'right' */
+background_color:'#4682B4', 
+text_color: 'white', /* 'white', 'black' */
+hover_color: '#496B87',
+lang: 'en' /* 'en', 'de', 'nl', 'es', 'fr' */
+})
+</script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-651585-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body>
+</html>

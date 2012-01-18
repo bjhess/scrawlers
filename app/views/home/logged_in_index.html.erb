@@ -1,0 +1,150 @@
+<%- stylesheet("homepage.css") -%>
+<%- title("Simple online writing workshop for 100-word stories") -%>
+
+<div class="logged_in_homepage">
+  
+  <%- cache("home/logged_in_index") do -%>
+    <div class="lead_in">
+  
+      <h1>Scrawlers</h1>
+    
+      <div class="slice">
+        <div class="inner_wrap">
+          <%= link_to "#{Story.count} stories", recent_stories_path -%> &middot; 
+          <%= link_to "#{User.count} writers", users_path -%> &middot;
+          <%= link_to "#{Comment.count} notes", notes_path -%> &middot;
+          <%= link_to "Blog", blog_url -%> &middot;
+          <%= twitter_link("Twitter") %>
+        </div>
+      </div>
+    
+      <h3>
+        Welcome, writer.<br />
+        Get in there and <%= link_to("get writing", new_story_path) -%>!
+      </h3>
+    </div>
+  <%- end -%>
+  
+  <%- cache("home/index/current_user_stories/#{current_user.id}") do -%>
+    <%- current_user_stories = current_user.stories.ordered.limited(5) -%>
+    <h4><%= current_user_stories.present? ? link_to("Your latest stories", user_stories_path(current_user)) : "Your latest stories" -%></h4>
+
+    <%- if current_user_stories.present? -%>
+      <ul>
+        <%- current_user_stories.each do |story| -%>
+          <li>
+            <%= link_to(h(story.title), story_path(story)) -%>
+            <span class="meta"><%= time_ago(story.published_at || story.created_at) %></span>
+          </li>
+        <%- end -%>
+      </ul>
+    <%- else -%>
+      <div class="no_content">
+        You have not written a story yet. What are you waiting for?
+        <%= link_to("Give it a try", new_story_path) -%>!
+      </div>
+    <%- end -%>
+  <%- end -%>
+
+  <%- cache("home/index/current_user_notes/#{current_user.id}") do -%>
+    <%- current_user_notes = current_user.comments.ordered.limited(5) -%>
+    <h4><%= current_user_notes.present? ? link_to("Your latest notes", user_notes_path(current_user)) : "Your latest notes"-%></h4>
+
+    <%- if current_user_notes.present? -%>
+      <ul>
+        <%- current_user_notes.each do |note| -%>
+          <%- story = note.story -%>
+          <li>
+            New <%= note.is_response? ? "response" : "note" %> on 
+            <%= link_to(h(story.title), story_path(story, :anchor => "comment_#{note.id}")) %>
+            <%- if note.is_note? -%>
+              by <%= link_to(h(story.user.display_name), user_path(story.user)) %>
+            <%- end -%>
+            <span class="meta"><%= time_ago(note.created_at) %></span>
+          </li>
+        <%- end -%>
+      </ul>
+    <%- else -%>
+      <div class="no_content">
+        Critiquing stories is a great way to learn the craft.
+        Browse through our <%= link_to("new releases", recent_stories_path) %>
+        and give some notes
+      </div>
+    <%- end -%>
+  <%- end -%>
+
+  <%- current_user_received_notes = current_user.received_notes.ordered.limited(5) -%>
+  <%- if current_user_received_notes.present? -%>
+    <h4>Latest notes on your stories</h4>
+
+    <%# TODO: Fragment cache this. Expire when someone writes a new note (not response) on user's story %>
+    <ul>
+      <%- current_user_received_notes.each do |note| -%>
+        <%- story = note.story -%>
+        <li>
+          <%= link_to("#{h(note.user.display_name)} noted on #{h(story.title)}", story_path(story, :anchor => "comment_#{note.id}")) -%>
+          <span class="meta"><%= time_ago(note.created_at) %></span>
+        </li>
+      <%- end -%>
+    </ul>
+  <%- end -%>
+
+  <h4>Latest stories from your favorite authors</h4>
+
+  <%# TODO: Fragment cache this. Expire when someone writes a new story and is a favorite author of X %>
+  <%- favorite_author_stories = current_user.favorite_author_stories(5) -%>
+  <%- if favorite_author_stories.present? -%>
+    <ul>
+      <%- favorite_author_stories.each do |story| -%>
+        <li>
+          <%= link_to(h(story.title), story_path(story)) -%> by
+          <%= link_to(h(story.user.display_name), user_path(story.user)) %>
+          <span class="meta"><%= time_ago(story.published_at || story.created_at) %></span>
+        </li>
+      <%- end -%>
+    </ul>
+  <%- else -%>
+    <div class="no_content">
+      You have not marked any authors as your favorite.
+      <%= link_to("Find an author you enjoy", recent_stories_path) %>
+      and make it happen!
+    </div>
+  <%- end -%>
+  <%# TODO: Fragment cache this. Expire when someone writes a not and story is a favorite of X %>
+  <h4>Latest activity on favorite stories</h4>
+
+  <%- favorite_story_notes = current_user.favorite_story_notes(5) -%>
+  <%- if favorite_story_notes.present? -%>
+    <ul>
+      <%- favorite_story_notes.each do |note| -%>
+        <%- story = note.story -%>
+        <li>
+          New <%= note.is_response? ? "author response" : "note" %> by <%= link_to(h(note.user.display_name), user_path(note.user)) %>
+          on <%= link_to(h(story.title), story_path(story, :anchor => "comment_#{note.id}")) %>
+          <span class="meta"><%= time_ago(note.created_at) %></span>
+        </li>
+      <%- end -%>
+    </ul>
+  <%- else -%>
+    <div class="no_content">
+      You have not marked any stories as your favorite.
+      <%= link_to("Find a story you like", recent_stories_path) %>
+      and give it props!
+    </div>
+  <%- end -%>
+
+  <%- cache("home/index/new_releases") do -%>
+    <h4><%= link_to("New releases", recent_stories_path) %></h4>
+
+    <ul>
+      <%- Story.ordered.limited(5).each do |story| -%>
+        <li>
+          <%= link_to(h(story.title), story_path(story)) -%> by
+          <%= link_to(h(story.user.display_name), user_path(story.user)) %>
+          <span class="meta"><%= time_ago(story.published_at || story.created_at) %></span>
+        </li>
+      <%- end -%>
+    </ul>
+  <%- end -%>
+  
+</div>

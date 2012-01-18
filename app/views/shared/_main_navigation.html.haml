@@ -1,0 +1,9 @@
+%ul
+  %li{:class => @current_tab == :home ? 'current' : '' }
+    = link_to "Home", :controller => :home, :action => :index
+  %li{:class => @current_tab == :contests ? 'current' : '' }
+    = link_to "contests", contests_path
+  %li{:class => @current_tab == :recent ? 'current' : '' }
+    = link_to "New Releases", recent_stories_path
+  %li
+    = link_to "Blog", blog_url

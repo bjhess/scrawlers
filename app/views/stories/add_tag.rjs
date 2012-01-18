@@ -1,0 +1,9 @@
+page.delay(0.1.second) do
+  page.replace_html("tag_display_#{@story.id}",
+                    :partial => "tags",
+                    :locals => { :story => @story })                 
+  page["tag_display_#{@story.id}"].visual_effect :highlight
+end
+page.delay(0.1.second) do
+  page["tag_name_#{@story.id}"].value = ""
+end

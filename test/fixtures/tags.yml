@@ -1,0 +1,6 @@
+non-fiction:
+  id: 1
+  name: non-fiction
+fiction:
+  id: 2
+  name: fiction

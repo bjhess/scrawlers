@@ -1,0 +1,20 @@
+To use this plugin after installing the gem:
+
+  require 'scaffolding_extensions'
+
+If you want to use it without installing the gem, add this before requiring
+it:
+
+  $:.unshift('scaffolding_extensions/lib')
+
+If your models are not located in model/, it is easiest to let Scaffolding
+Extensions know about them manually (this is only necessary if you are using
+scaffold_all_models without :only):
+
+  ScaffoldingExtensions.all_models = [Model1, Model2, Model3]
+
+You should add this code after your models have been loaded but before your
+controllers have been loaded.
+
+Also, note that Scaffolding Extensions uses the :Erubis engine in Ramaze,
+so you must have Erubis installed to use it.

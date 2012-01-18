@@ -1,0 +1,13 @@
+<%= render :partial => "shared/header" %>
+<%= render :partial => "shared/header_navigation" %>
+
+  <div id="content" class="two_column span-15 push-1">
+    <%= render :partial => "shared/flash_area" %>    
+    <%= yield %>
+  </div>
+
+  <div id="sidebar" class="span-7 prepend-top last">
+    <%= yield(:sidebar) %>
+  </div>
+
+<%= render :partial => "shared/footer" %>	

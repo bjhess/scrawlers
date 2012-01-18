@@ -1,0 +1,16 @@
+- title("#{truncate(@story.title, :length => 40)} by #{@story.user.display_name}")
+= render :partial => 'story', :object => @story
+- if @story.notes.present?
+  #notes.notes
+    %h3= pluralize(@story.notes.count, "Note")
+    = render :partial => "comment", :collection => @story.notes, :locals => {:user => @story.user}
+= render :partial => "comment_form" unless is_current_user?(@story.user)
+
+- sidebar_area do
+  = render :partial => "sidebar/author", :object => @story.user
+  - user_story_list = @story.user.stories.excluding(@story).limited(10).ordered
+  - if user_story_list.present?
+    %h4= "Others by #{link_to_user_profile(@story.user)}" 
+    %ul
+      - user_story_list.each do |story|
+        %li= link_to story.title, story_path(story)

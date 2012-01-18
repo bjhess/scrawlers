@@ -1,0 +1,11 @@
+.listed_story
+  %h6= link_to(truncate(h(story.title), :length => 35), story_path(story))
+  .meta
+    = time_ago(story.published_at)
+    - if story.notes.count > 0
+      &middot;
+      = link_to(pluralize(story.notes.count, "note"), :controller => :stories, :action => :show, :id => story.id, :anchor => "comments")
+      - new_comment_count = story.number_of_comments_since_last_view
+      - if @user.is_same_user?(current_user) && new_comment_count > 0
+        &middot;
+        %span.highlight= pluralize(new_comment_count, "new note")

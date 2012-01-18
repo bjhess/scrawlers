@@ -1,0 +1,40 @@
+<%- title("Frequently Asked Questions") -%>
+<h2>Frequently Asked Questions</h2>
+
+<div id="faq">
+
+<% @faq_sections.each do |section| %>
+	<h5>
+		<%= section.title%>
+	</h5>
+	<% if section.children.empty? -%>
+		<%= render(:partial => "question_link_list", :locals => { :section => section }) %>
+	<% else -%>
+		<% section.children.each do |subsection| -%>
+		<h6>
+			<%= subsection.title %>
+		</h6>
+			<%= render(:partial => "question_link_list", :locals => { :section => subsection }) %>
+		<% end -%>
+	<% end -%>
+<% end -%>	
+
+<hr />
+	
+<% @faq_sections.each do |section| -%>
+	<h3 <%= "class='no_subsection'" if section.children.empty? %>>
+		<%= section.title %>
+	</h3>
+	<% if section.children.empty? -%>
+		<%= render(:partial => "questions", :locals => { :section => section }) %>
+	<% else -%>
+		<% section.children.each do |subsection| -%>
+		<h4>
+			<%= subsection.title %>
+		</h4>
+			<%= render(:partial => "questions", :locals => { :section => subsection }) %>
+		<% end -%>
+	<% end -%>
+	
+<% end -%>
+</div>

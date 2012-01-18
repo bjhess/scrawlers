@@ -1,0 +1,13 @@
+<%# TODO: Replace these partials -%>
+<ul>
+<% for story in story_list.first(number_to_list) -%>
+
+	<li>
+		<%= link_to story.title, story_path(story) %>
+		<% unless bypass_byline -%>
+			by <%= story.user.display_name %>
+		<% end -%>
+	</li>
+
+<% end -%>
+</ul>

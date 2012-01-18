@@ -1,0 +1,7 @@
+#page.visual_effect :appear, "comment_response_#{@commend_id}", duration => 0.6
+page.visual_effect :blind_down, "comment_response_#{@comment_id}", :duration => 0.6
+page.hide "respond_link_comment_#{@comment_id}"
+page.delay(1.second) do
+  page << "Effect.ScrollTo('comment_#{@comment_id}')"
+  page["comment_response_#{@comment_id}_body"].focus
+end

@@ -1,0 +1,17 @@
+<div id="send_invitation_<%= story_id %>" class="inline_form">
+   <%= error_messages_for(:invite) %>
+   <% form_remote_tag(:url => {:action => :send_invitation, :id => story_id}) do %>
+     <table border="0" cellspacing="0" cellpadding="0">
+       <tr>
+         <td class="field">
+           <%= text_field_tag(:invitation_email, '', :size => 20) %> 
+         </td>
+         <td class="buttons_h inline">
+           <button type="submit">Send To Friend!</button>
+         </td>
+       </tr>
+     </table>
+     <span id="invite_message_<%= story_id %>">
+     </span>
+   <% end %>
+</div>

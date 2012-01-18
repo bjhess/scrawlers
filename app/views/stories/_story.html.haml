@@ -1,0 +1,28 @@
+- @story = story
+.story
+  %h2
+    = link_to_story_title
+    %br
+    .author= "by #{link_to_user_profile(story.user)}"
+  .body
+    = simple_format(strip_tags(story.body))
+  .meta
+    = favorite_story_area
+    %table
+      %tr
+        %td.label Written
+        %td= time_ago(story.published_at || story.created_at)
+      %tr
+        %td.label Tags
+        %td{:id => "tag_display_#{story.id}"}
+          = render :partial => "stories/tags"
+      - if !story_show_page?
+        %tr
+          %td.label Notes
+          %td
+            = link_to(pluralize(story.notes.count, "note"), story_path(story, :anchor => 'notes'))
+      - if story.allow_editing?(current_user)
+        %tr
+          %td{:colspan => "2", :style => "text-align: center; padding-top: 10px;"}
+            %span.tool
+              = link_to "You may edit your Scrawl until someone leaves a note.", edit_story_path(story)

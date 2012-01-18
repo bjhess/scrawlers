@@ -1,0 +1,2 @@
+<%= get_story_tags(@story) %>
+<%= render :partial => "stories/tag_form" if is_current_user?(@story.user) %>

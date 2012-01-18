@@ -1,0 +1,11 @@
+.note_form
+  - if logged_in?
+    %h3 Leave a note
+    - form_for :comment, :url => story_notes_path(@story), :html => { :onsubmit => "return validateComment()" } do |form|
+      = form.hidden_field :story_id
+      = form.text_area :body, :size => '100x100'
+      .buttons_h.inline
+        %button#note_button{:type => "submit", :class => 'button positive'} Note!
+  - else
+    %h3 Want to leave a note?
+    %p= "Sorry, but you must #{link_to("login", :controller => :sessions, :action => :login)} or #{link_to("sign up", :controller => :sessions, :action => :signup)} to write notes to our writers."

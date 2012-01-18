@@ -1,0 +1,48 @@
+<%- title("Sign up to join the writing workshop") -%>
+<div class="system_form">
+  <div class="heading">
+    <h1><%= link_to("Scrawlers", :controller => :home) %></h1>
+    <p>Write now.</p>
+  </div>
+
+  <%= error_messages_for :user %>
+  
+  <% form_for :user do |f| -%>
+    <label for="user_email">Email</label> &nbsp;<span class="hint">(Use your email to login.)</span>
+  	<div class="field"><%= f.text_field :email %></div>
+
+    <label for="user_display_name">Display name</label> &nbsp;<span class="hint">(Appears on your stories and notes.)</span>
+  	<div class="field"><%= f.text_field :display_name %></div>
+
+    <label for="user_password">Password</label>
+  	<div class="field"><%= f.password_field :password %></div>
+
+    <label for="user_password_confirmation">Confirm</label>
+  	<div class="field"><%= f.password_field :password_confirmation %></div>
+
+  	<div class="button_tag">
+  		<button type="submit" class="button positive">Sign up now!</button>
+  	</div>
+	
+  	<%= clear_both %>
+  <% end %>
+
+  <div class="otheroptions">
+    Already a scrawler? <%= link_to "Login, already!", :action => :login %><br />
+    Having problems signing up?  Please <%= help_email_link -%>.<br />
+    By signing up you affirm your agreement with the<br />
+    &nbsp;&nbsp;
+    <%= link_to "terms &amp; conditions", 
+					{ :controller => :the_scrawl, 
+					  :action => :terms_and_conditions } %>,
+		as well as your understanding of our<br />
+		&nbsp;&nbsp;
+		<%= link_to "privacy policy", 
+					{ :controller => :the_scrawl, 
+					  :action => :terms_and_conditions,
+					  :anchor => :privacy_policy } %>.
+  </div>
+
+</div>
+
+<%= set_focus_to_id "user_email" %>

@@ -1,0 +1,30 @@
+- title("#{@header} : 100-word story writing contest")
+- stylesheet("contests.css")
+
+- header_area do
+  %h2.page_header= @header
+#contest_image
+  = image_tag(@active_contest.image_link)
+#contest_description
+  %p= @active_contest.description
+  %p= link_to_function('Rules', show_div(:contest_rules))
+  %ol{:id => 'contest_rules', :style => "display:none;"}
+    %li Many will enter, one will win. There can only be one.
+    %li Enter as many times as you want, so long as your entries adhere to the contest rules.
+    %li= "Your story must be posted between #{@active_contest.start_time.to_s(:month_day)} and #{@active_contest.end_time.to_s(:month_day)} to be eligible. Adding contest tags to stories posted prior to or after the contest dates will disqualify the entry."
+    %li Scrawlers employees and their families are ineligible to win (sorry, Mom).
+    %li Have fun.
+  %p= "#{link_to('Start writing', new_story_path)} your contest entry now."
+= clear_both
+.contest_sub_section
+  %h3 Entries
+  - if @entered_stories_list_one.present?
+    = render(:partial => "application/story_title_list", :object => @entered_stories_list_one, :locals => { :number_to_list => 100 })
+    = render(:partial => "application/story_title_list", :object => @entered_stories_list_two, :locals => { :number_to_list => 100 })
+  - else
+    %p= "No entries yet!  #{link_to('Be the first to enter', new_story_path)}."
+= clear_both
+- unless @past_contests.blank?
+  .contest_sub_section
+    %h3 Past Contests
+    = render(:partial => 'past_contest', :collection => @past_contests)

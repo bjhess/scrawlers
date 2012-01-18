@@ -1,0 +1,42 @@
+body {
+	font-family : georgia, verdana, arial, helvetica, sans-serif;
+	font-size : 12pt;
+	color : #000000;
+	background-color : #FAEBD7;
+}
+
+div#teaser h2 {
+	padding: 5px;
+	margin: 10px 0px 0px 0px;
+}
+div#teaser h3 {
+	padding: 5px;
+	margin: 0px 0px 0px 0px;
+}
+
+div#teaser span.descriptive {
+	margin: 0px 0px 0px 37px;
+}
+
+div#teaser td {
+	text-align: left;
+}
+
+input.button {
+	font-family : georgia, verdana, arial, helvetica, sans-serif;
+	font-size : 8pt;
+	font-weight : bold;
+	color : white;
+	border : 1px solid #000000;
+	height : 24px;
+	background : #6699FF;
+}
+input.button:hover {
+	background: #99ccff;
+}
+
+span#help_note {
+	font-size : 8pt;
+	font-weight: bold;
+	/*background-color: #FFFF99;*/
+}

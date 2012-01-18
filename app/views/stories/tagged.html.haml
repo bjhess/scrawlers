@@ -1,0 +1,4 @@
+- title("100-word stories about #{@tag_name}")
+- @subtitle = "Stories tagged: #{@tag_name}"
+.story_list
+  = render :partial => 'story', :collection => @stories

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Scrawlers - Writers read. Writers write.</title>
+		<link href="/stylesheets/teaser.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+  <div align="center" id="teaser">
+
+	<h1>Scrawlers</h1>
+
+	<h3>Here's how it works:</h3>
+
+	<table>
+		<tr>
+			<td>
+			<h2>1. Have a story?  Jot it down!</h2>
+			<span class="descriptive">We accept stories of no more than 100 words.</span>
+			<h2>2. Sign-up for a base membership!</h2>
+			<span class="descriptive">It's free, secure, and easy.</span>
+			<h2>3. Post your story!</h2>
+			<span class="descriptive">Other writers get to see your work.</span>
+			<h2>4. Give other writers notes!</h2>
+			<span class="descriptive">The process is similar to a writing workshop.</span>
+			<h2>5. Receive notes from writers!</h2>
+			<span class="descriptive">Workshop your story until it's just right.</span>
+			</td>
+		</tr>
+	</table>
+
+	<br />
+	<h2>Simple. &nbsp;&nbsp;&nbsp;&nbsp;Productive.&nbsp;&nbsp;&nbsp;&nbsp; Fun. &nbsp;&nbsp;&nbsp;&nbsp;Waffles.</h2>
+
+	<h1>Scrawlers</h1>
+
+	<h3>Coming soon.</h3>
+
+	<br /><br />
+	<form action="mail.php" method="POST">
+	<table>
+	    <tr>
+	        <td>
+				<input name="email">&nbsp;&nbsp;
+			</td>
+			<td>
+				<input type="submit" class="button" name="submitButton" value="Notify me when Scrawlers launches!"/>
+			</td>
+		<tr>
+		    <td>
+			<span id="help_note">(Enter e-mail address)</span>
+			</td>
+			<td></td>
+		</tr>
+     </table>
+     </form>
+
+	<h5><a href="http://blog.scrawlers.com">blog</a></h5>
+
+  </div>
+  </body>
+</html>

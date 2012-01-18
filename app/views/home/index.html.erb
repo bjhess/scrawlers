@@ -1,0 +1,31 @@
+<%- stylesheet("homepage.css") -%>
+<%- title("Simple online writing workshop for 100-word stories") -%>
+
+<%- now = Time.now -%>
+<%- cache("home/index/#{now.to_s(:year_day)}#{(now.to_s(:hour).to_i-1)/4}") do  # Expire every 4 hours -%>
+  <div id="top">
+    <div class="inner_wrap">
+      <div class="lead_in">
+      
+        <h1>Scrawlers</h1>
+      
+        <h3>
+          Thanks for the stories!
+        </h3>
+        
+        <p style="font-size:1.3em">
+          Scrawlers has closed.
+        </p>
+
+      </div>
+    </div>
+  </div>
+<%- end -%>
+
+
+<div id="bottom">
+  <div class="container" style="text-align:center;">
+    Scrawlers was created by <%= link_to("Barry Hess", "http://bjhess.com") %> 
+    and <%= link_to("Nathan Melcher", "http://nathanmelcher.com") -%>.
+  </div>
+</div>

@@ -1,0 +1,10 @@
+- @user = @story.user
+.sidebar_section
+  %h3 Submitted by
+  %ul
+    %li 
+      = link_to_user_profile(@user) + ' » ' 
+      %nobr= time_ago(@story.published_at || @story.created_at)
+    %li{:style => 'text-indent:0px'}
+      %p= strip_tags(@user.bio_or_default)
+      = edit_own_bio_link_if_needed

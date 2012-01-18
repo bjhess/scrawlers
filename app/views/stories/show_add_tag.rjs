@@ -1,0 +1,5 @@
+page["add_tag_#{@story_id}_link"].hide
+page["add_tag_#{@story_id}"].show
+page.delay(0.1.second) do
+  page["tag_name_#{@story_id}"].focus
+end

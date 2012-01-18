@@ -1,0 +1,22 @@
+	<%= render(:partial => "sidebar/footer") %>
+	</div>
+	<div class="footer">
+	</div>
+</div>
+<% unless logged_in? -%>
+  <div class="sidebar_notify">
+  	<div class="body">
+  		<h3>
+  			<%= link_to "Sign up now!", :controller => "sessions", :action => "signup" %>
+  		</h3>
+  		<p>
+  		Please
+  		<%= link_to "sign up now", :controller => "sessions", :action => "signup" %>
+  		to take advantage of all Scrawlers' benefits.  Write and leave notes
+  		- all for FREE!
+  		</p>
+  	</div>
+  	<div class="footer">
+  	</div>
+  </div>
+<% end -%>

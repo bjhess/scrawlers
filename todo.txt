@@ -1,0 +1,4 @@
+o Back up voting information
+o Rip out voting (on messages, top rated, home page)
+o Back up views information
+o Rip out views and tables

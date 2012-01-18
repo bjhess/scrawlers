@@ -1,0 +1,5 @@
+.past_contest_item
+  %h4= link_to(past_contest.title, contest_path(past_contest))
+  .meta
+    Winner:
+    = contest_winner_text(past_contest)

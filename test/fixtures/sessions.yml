@@ -1,0 +1,10 @@
+yesterday_session:
+  id: 1
+  session_id: 851107a1ccf96b896c6dd11039725ead
+  data: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoKQHVzZWR7AA==
+  updated_at: <%= 1.days.ago.to_s :db %>
+eleven_hours_ago_session:
+  id: 2
+  session_id: 58b5a31b00d275905de24bbe3de7462e
+  data: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoKQHVzZWR7AA==
+  updated_at: <%= 11.hours.ago.to_s :db %>

@@ -1,0 +1,8 @@
+- @author = author
+#author_bio
+  %h4
+    = 'users' == controller.controller_name ? author.display_name : "More about #{link_to_user_profile(author)}" 
+  %p
+    = strip_tags(author.bio_or_default)
+    = edit_own_bio_link_if_needed
+  = favorite_author_area

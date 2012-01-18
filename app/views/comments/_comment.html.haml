@@ -1,0 +1,18 @@
+.comment
+  %h4
+    = link_to "Note", story_path(comment.story, :anchor => "comment_#{comment.id}") 
+    on
+    = link_to h(comment.story.title), story_path(comment.story)
+    %span.author= "by #{link_to_user_profile(comment.story.user)}"
+  .story.rounded= simple_format(strip_tags(comment.story.body)) 
+  .body= simple_format(strip_tags(comment.body))
+  .meta
+    %table
+      - if !@user
+        %tr
+          %td.label Note by
+          %td= link_to_user_profile(comment.user)
+      %tr
+        %td.label Written
+        %td= time_ago(comment.created_at)
+  

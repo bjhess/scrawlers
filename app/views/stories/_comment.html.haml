@@ -1,0 +1,7 @@
+%h5{:id => dom_id(comment)}
+  = link_to_user_profile(comment.user)
+  %span.meta= time_ago(comment.created_at)
+.note
+  = simple_format(comment.body)
+  = render :partial =>'comment_response', :object => comment
+.clear

@@ -1,0 +1,39 @@
+<%- title("Login and continue workshopping 100-word stories") -%>
+<div class="system_form">
+
+  <div class="heading">
+    <h1><%= link_to("Scrawlers", :controller => :home) %></h1>
+    <p>Get back in there.</p>
+  </div>
+
+  <%= error_message_on :user, :email %>
+  <%= render :partial => "shared/flash_area" %>
+
+  <% form_tag do %>
+    <label for="email">Email</label>
+	  <div class="field"><%= text_field_tag :email %></div>
+
+    <label for="password">Password</label>
+	  <div class="field"><%= password_field_tag :password %></div>
+
+    <div class="button_tag">
+		  <button type="submit" class="button positive">Log in!</button>
+		</div>
+
+    <div class="rememberme" style="width: 50%">
+      <%= check_box_tag :remember_me, value="1", checked=true %>
+      <label for="remember_me">Remember me</label>
+    </div>		
+
+  	<%= clear_both %>
+  <% end %>
+  
+  <div class="otheroptions">
+    <%= link_to "Forget your password?", forgot_password_path %><br />
+    Other problems logging in?  Please <%= help_email_link %>.<br />
+    Not a scrawler? <%= link_to "Sign up now!", :action => :signup %>
+  </div>
+
+</div>
+
+<%= set_focus_to_id "email" %>

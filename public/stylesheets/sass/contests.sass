@@ -1,0 +1,34 @@
+@import def
+
+#contest_image
+  :float right
+  img
+    :border none
+  a
+    &:hover, &:link, &:visited
+      :text-decoration none
+      :border-bottom none
+      
+#contest_description
+  .highlight
+    :color = !dark_gray
+    :font-weight bold
+    :background-color transparent
+    :padding 0
+
+.contest_sub_section
+  :padding-top 20px
+  h3
+    :padding-bottom 3px
+    :border-bottom = 1px solid !light_gray
+  ul
+    :margin-right 1em
+    :font-size 0.95em
+    :float left
+    :width 44%
+
+.past_contest_item
+  h4
+    :padding 0
+    :margin-bottom 4px
+  :margin-bottom 25px

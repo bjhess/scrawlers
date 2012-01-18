@@ -1,0 +1,16 @@
+<dl>
+<% section.questions.each do |question| -%>
+
+	<dt id="<%= question.id %>">
+		<%= question.title %>
+	</dt>
+	<dd>
+		<%= question.answer %>
+	</dd>
+	
+<% end -%>
+</dl>
+
+<p class="hint" style="text-align: right;">
+	<%= link_to "Top", :anchor => :faq %>
+</p>

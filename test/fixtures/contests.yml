@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+past:
+  title: First Contest
+  tag_name: first
+  description: Here's our first contest!
+  prize_link: http://www.amazon.com/War-Art-Through-Creative-Battles/dp/0446691437
+  image_link: http://ecx.images-amazon.com/images/I/4166HKSZZ3L._OU01_AA240_SH20_.jpg
+  start_time: <%= 14.days.ago.to_s :db %>
+  end_time: <%= 7.days.ago.to_s :db %>
+  first_place_id: 1
+active:
+  title: The War of Art Contest
+  tag_name: resistance
+  description: Inspiration.  Do-it-yourself.  The muse.  Whatever you call it, it's necessary to keep on writing.  Come on!
+  prize_link: http://www.amazon.com/War-Art-Through-Creative-Battles/dp/0446691437
+  image_link: http://ecx.images-amazon.com/images/I/4166HKSZZ3L._OU01_AA240_SH20_.jpg
+  start_time: <%= 2.days.ago.to_s :db %>
+  end_time: <%= 7.days.since.to_s :db %>

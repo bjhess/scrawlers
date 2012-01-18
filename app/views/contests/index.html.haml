@@ -1,0 +1,7 @@
+- title("100-word story writing contests")
+- stylesheet("contests.css")
+
+- header_area do
+  %h2.page_header= @header
+.contest_sub_section
+  = render(:partial => 'past_contest', :collection => @past_contests)

@@ -1,0 +1,10 @@
+tag_fiction_yesterdays_story:
+  id: 1
+  taggable_id: 1
+  tag_id: 2
+  taggable_type: story
+tag_non_fiction_ten_days_ago_story:
+  id: 2
+  taggable_id: 2
+  tag_id: 1
+  taggable_type: story

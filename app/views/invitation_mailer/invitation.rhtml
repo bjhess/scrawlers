@@ -1,0 +1,21 @@
+Scrawlers writer <%= @invitation.user.display_name %> (<%= @invitation.user.email %>) would like to share this 100-word story with you.
+
+  "<%= @invitation.invited.title %>" by <%= @invitation.invited.user.display_name %>
+
+To read the story, please click below:
+
+  <%= url_for(:host => 'www.scrawlers.com',
+              :controller => :stories, 
+              :action => :show, 
+              :id => @invitation.invited.id, 
+              :only_path => false) %>
+
+To read what <%= @invitation.user.display_name %> has been writing, visit:
+
+  <%= user_url(@invitation.user) %>
+
+Thank you!
+--
+The Scrawlers Team
+http://www.scrawlers.com
+info@scrawlers.com

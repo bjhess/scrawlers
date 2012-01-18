@@ -1,0 +1,9 @@
+<%= render :partial => "shared/header" %>
+<%= render :partial => "shared/header_navigation" %>
+  
+  <div id="content" class="span-16 push-4">
+    <%= render :partial => "shared/flash_area" %>    
+    <%= yield %>
+  </div>
+
+<%= render :partial => "shared/footer" %>	

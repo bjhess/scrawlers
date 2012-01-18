@@ -1,0 +1,4 @@
+page.replace_html("tag_display_#{@story.id}",
+                  :partial => "tags",
+                  :locals => { :story => @story })
+page["tag_display_#{@story.id}"].visual_effect :highlight

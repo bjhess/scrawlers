@@ -1,0 +1,15 @@
+#write_preview.story{:style => "display:none;"}
+  %h2#story_title_preview
+  #story_body_preview.body
+  .meta
+    %table
+      %tr
+        %td.label Word count
+        %td#story_word_count_preview
+      %tr
+        %td.label Tags
+        %td#story_tag_string_preview
+
+  .buttons_h.inline
+    = link_to_function("Edit!", hide_preview, :class => "button")
+    = scrawl_button_and_spinner

@@ -1,0 +1,147 @@
+= ScaffoldingExtensions
+
+Scaffolding Extensions provides a powerful and simple to use administrative
+interface to perform common actions on models.  It has the following features:
+
+* Creates pages for browsing, creating, deleting, displaying, updating, 
+  searching, and merging records
+* Choose which fields are displayed in the scaffolds and in which order
+* Handles associated records for common one-to-many, many-to-one, and
+  many-to-many associations
+* Extensive support for modifying the display and working of the plugin
+* Advanced features such as access control, autocompleting, and eager loading
+
+Scaffolding Extensions is not a code generator, and isn't really scaffolding at
+all, as you are not expected to modify the output.  Instead, you use
+configuration options inside the model to control the display of the pages.
+The scaffolding analogy is misleading, Scaffolding Extensions is not really
+scaffolding--it is a completely functional structure that you can easily modify
+to better suit your needs.
+
+Scaffolding Extensions currently supports:
+
+* Web Frameworks
+  * Rails 2.3.2
+  * Ramaze 2009.02
+  * Camping 1.5
+  * Sinatra 0.9.1
+  * Merb 1.0.4
+* Object Relational Mappers
+  * ActiveRecord 2.3.2
+  * Sequel 2.12.0
+* Javascript Libaries (used for Ajax/Autocompleting)
+  * Prototype 1.6.0.3
+  * JQuery 1.2.3
+  
+Support for other web frameworks and ORMs can be added, see the
+controller_spec.txt and model_spec.txt files for the methods that need to be
+defined.
+
+The current version of Scaffolding Extensions is quite different from older
+versions (svn revision 89 and previous).  Older versions of Rails should be
+able to use an older version of the plugin, which won't be discussed further as
+it is substantially different from the current version (see the conversion.txt
+file for details).
+
+You can get Scaffolding Extensions via git or as a gem:
+
+* git: git://github.com/jeremyevans/scaffolding_extensions.git
+* gem: sudo gem install scaffolding_extensions
+* demo: http://scaffolding-extensions.jeremyevans.net
+* github: http://github.com/jeremyevans/scaffolding_extensions
+* RDoc: http://scaffolding-ext.rubyforge.org
+* Bug Tracker: http://rubyforge.org/tracker/?atid=22169&group_id=5726&func=browse
+* Forum: http://rubyforge.org/forum/forum.php?forum_id=22403
+
+== Quick Start
+
+The recommended use of the plugin is to execute:
+
+  scaffold_all_models
+  
+inside of a controller.  We'll assume the path to the controller is /admin.
+
+Then go to the index page for the controller (e.g. http://website/admin).  
+You'll see a link to a management page for each of your models.  Each
+management page has links to browse, create, delete, edit, show, search, and
+merge pages for the model. The pages are usable right away, but you'll want to
+add some configuration code to your models to specify the default names to
+display in select boxes, attributes to show on the forms, associations to show,
+whether to use select boxes or autocompleting text boxes, etc..
+
+== Customization
+
+The main reason to use this plugin are the features and extent of customization
+it provides.  Customization is done by adding methods and instance variables
+to the model class itself. Here are some common customizations:
+
+  class Album < ActiveRecord::Base
+    has_and_belongs_to_many :artists
+    belongs_to :genre
+    @scaffold_fields = [:name, :rating, :genre, :numtracks]
+    @scaffold_select_order = 'name'
+    @scaffold_column_names = {:numtracks=>'Number of Tracks'}
+    @scaffold_use_auto_complete = true
+    def scaffold_name
+      name[0...50]
+    end
+  end
+
+@scaffold_fields determines which fields are shown in the new, edit, and search
+forms (which use the order specified).  It should be a list of symbols.  If you
+want some pages to show more fields than others, you can define variables such
+as @scaffold_edit_fields or @scaffold_search_fields to override the defaults
+for certain pages.
+
+@scaffold_select_order determines which order is used in the SQL ORDER BY
+clause when displaying a list of objects (for example, when choosing an object
+to edit).
+
+@scaffold_column_names specifies the visible names for each attribute.
+
+@scaffold_use_auto_complete turns on autocompleting for the model, instead
+of using select boxes (necessary for a decent response time if you have a large
+number of records). See the advanced.txt for more autocompleting options.
+
+scaffold_name is an instance method that determines the name to use for each
+album inside those select boxes.
+
+Notice in this case that genre was specified.  In this case, our schema has 
+genre_id as a foreign key to the genres table.  If you specified genre_id,
+you'd get a usual text input box for the foreign key integer.  If you specify
+genre (the name of the belongs_to association), instead of a text input box,
+you will get a select box with all genres, allowing you to pick one.  It will
+use the @scaffold_select_order variable and scaffold_name method in the Genre 
+model to format the select box (though this can be overridden with the
+@scaffold_genre_select_order_association variable in the Album model).
+
+If you have @scaffold_auto_complete_options set in the Genre model (or
+@scaffold_genre_association_use_auto_complete set in the Album model), there
+will be an autocompleting text box instead of a select box (though since there
+aren't that many genres, you would probably be better off with a select box in
+this case).
+
+There are a ton of other customization options:
+
+* Override the input widget type and widget options per attribute
+* Choose which associations to display on the edit screen of a model
+* Choose which associations to eagerly load when displaying select boxes for
+  the model
+* Set the number of records returned in searching or browsing
+* Specify different fields used in each type of scaffold (e.g. certain fields
+  can only be viewed, not edited)
+* Control access to the model via a session variable (e.g. so a user can only
+  see objects with a matching user_id)
+
+Consult advanced.txt and/or the RDoc if you would like more information on
+these (and many other options).
+
+== Testing
+
+See the testing.txt file for details on the plugin's automated test suite and
+Rails functional testing support.
+
+== Questions?
+
+Please post on the RubyForge forum if you have any questions about Scaffolding
+Extensions.

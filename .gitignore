@@ -1,0 +1,14 @@
+.DS_Store
+tmp/*
+log/*.log
+config/database.yml
+tmtags
+public/*/tuneup
+*blog.tar
+*.sql
+scrawlers_blog.sql
+db/schema.rb
+scrawlers.css
+contests.css
+homepage.css
+rounded_corners.css

@@ -1,0 +1,25 @@
+xml.instruct!
+xml.rss 'version' => '2.0' do
+  xml.channel do
+    xml.title h("#{@author.display_name}'s stories on Scrawlers.com")
+    xml.link user_url(@author)
+    xml.pubDate CGI.rfc1123_date(@latest_story_time)
+    xml.description h("Stories written by #{@author.display_name} on Scrawlers.com, your online writing workshop.")
+    for story in @stories
+      xml.item do
+        xml.title h(story.title)
+        xml.link url_for(:only_path => false,
+                         :controller => :stories,
+                         :action => :show,
+                         :id => story.id)
+        xml.description simple_format(strip_tags(h(story.body)))
+        xml.pubDate CGI.rfc1123_date(story.published_at)
+        xml.guid url_for(:only_path => false,
+                         :controller => :stories,
+                         :action => :show,
+                         :id => story.id)
+        xml.author h(@author.display_name)
+      end
+    end
+  end
+end

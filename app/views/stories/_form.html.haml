@@ -1,0 +1,37 @@
+.app_form
+  = error_messages_for 'story'
+  - form_for @story do |f|
+    #write_form
+      = f.label :title
+      %br
+      .field
+        = f.text_field :title
+        &nbsp;&nbsp;Words so far:
+        %span#word_count
+    
+      .field
+        = f.text_area :body, :style => 'width: 500px; height: 270px'
+    
+      - meta_suffix = " Tag with <span class='highlight'>#{@active_contest.tag_name}</span> to enter the #{link_to('contest', contests_path)}" if @active_contest
+      = f.label :tag_string, "Tags &nbsp;<span class='meta' style='font-weight:normal;'>Multi-word tags in \"double quotes\" please.#{meta_suffix}</span>", :style => "font-size:0.95em"
+      %br
+      .field
+        = f.text_field :tag_string, :style => 'width: 500px;'
+    
+      = link_to_function("Preview!", show_preview, :class => "button")
+      %button.button.positive{:type => 'submit'} Scrawl!
+      = clear_both
+    
+    = render(:partial => "preview")
+
+  #form_note.otheroptions
+    Remember, Scrawlers is about 100-word stories. Embrace constraints!
+    %br
+    We'll let you know if you try to submit a story with more than the 100-word limit.
+    %br
+    Need assistance?  Please
+    = help_email_link + '.'
+    
+= word_count_observer
+
+= set_focus_to_id "story_title"

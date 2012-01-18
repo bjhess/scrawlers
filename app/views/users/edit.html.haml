@@ -1,0 +1,12 @@
+- title("Manage account")
+#profile_links
+  %p
+    %strong= link_to "Update email address", update_email_path
+    &nbsp;
+    %span.meta= @user.email
+  %p
+    %strong= link_to "Update profile", update_profile_path
+    &nbsp;
+    %span.meta= @user.display_name
+  %p
+    %strong= link_to "Update password", update_password_path

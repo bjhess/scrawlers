@@ -1,0 +1,6 @@
+- if @user
+  - @title    = "Notes by #{@user.display_name}"
+  - @subtitle = "Notes by #{link_to_user_profile(@user)}"
+- title(@title) if @title
+= render(:partial => "comment", :collection => @notes)
+= render(:partial => "application/paginate", :locals => { :collection => @notes})
